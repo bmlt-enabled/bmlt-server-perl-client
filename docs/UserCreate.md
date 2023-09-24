@@ -1,8 +1,8 @@
-# BmltClient::Object::UserCreate
+# bmlt-cli::Object::UserCreate
 
 ## Load the model package
 ```perl
-use BmltClient::Object::UserCreate;
+use bmlt-cli::Object::UserCreate;
 ```
 
 ## Properties

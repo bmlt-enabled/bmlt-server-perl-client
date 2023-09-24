@@ -1,8 +1,8 @@
-# BmltClient::Object::FormatCreate
+# bmlt-cli::Object::FormatCreate
 
 ## Load the model package
 ```perl
-use BmltClient::Object::FormatCreate;
+use bmlt-cli::Object::FormatCreate;
 ```
 
 ## Properties

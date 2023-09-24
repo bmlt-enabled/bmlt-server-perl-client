@@ -1,8 +1,8 @@
-# BmltClient::Object::FormatPartialUpdate
+# bmlt-cli::Object::FormatPartialUpdate
 
 ## Load the model package
 ```perl
-use BmltClient::Object::FormatPartialUpdate;
+use bmlt-cli::Object::FormatPartialUpdate;
 ```
 
 ## Properties

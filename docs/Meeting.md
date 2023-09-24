@@ -1,8 +1,8 @@
-# BmltClient::Object::Meeting
+# bmlt-cli::Object::Meeting
 
 ## Load the model package
 ```perl
-use BmltClient::Object::Meeting;
+use bmlt-cli::Object::Meeting;
 ```
 
 ## Properties

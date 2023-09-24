@@ -1,8 +1,8 @@
-# BmltClient::Object::FormatUpdate
+# bmlt-cli::Object::FormatUpdate
 
 ## Load the model package
 ```perl
-use BmltClient::Object::FormatUpdate;
+use bmlt-cli::Object::FormatUpdate;
 ```
 
 ## Properties

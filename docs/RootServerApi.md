@@ -1,8 +1,8 @@
-# BmltClient::RootServerApi
+# bmlt-cli::RootServerApi
 
 ## Load the API package
 ```perl
-use BmltClient::Object::RootServerApi;
+use bmlt-cli::Object::RootServerApi;
 ```
 
 All URIs are relative to *http://localhost:8000/main_server*
@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**auth_logout**](RootServerApi.md#auth_logout) | **POST** /api/v1/auth/logout | Revokes a token
 [**auth_refresh**](RootServerApi.md#auth_refresh) | **POST** /api/v1/auth/refresh | Revokes and issues a new token
 [**auth_token**](RootServerApi.md#auth_token) | **POST** /api/v1/auth/token | Creates a token
+[**create_error_test**](RootServerApi.md#create_error_test) | **POST** /api/v1/errortest | Tests some errors
 [**create_format**](RootServerApi.md#create_format) | **POST** /api/v1/formats | Creates a format
 [**create_meeting**](RootServerApi.md#create_meeting) | **POST** /api/v1/meetings | Creates a meeting
 [**create_service_body**](RootServerApi.md#create_service_body) | **POST** /api/v1/servicebodies | Creates a service body
@@ -24,6 +25,8 @@ Method | HTTP request | Description
 [**get_formats**](RootServerApi.md#get_formats) | **GET** /api/v1/formats | Retrieves formats
 [**get_meeting**](RootServerApi.md#get_meeting) | **GET** /api/v1/meetings/{meetingId} | Retrieves a meeting
 [**get_meetings**](RootServerApi.md#get_meetings) | **GET** /api/v1/meetings | Retrieves meetings
+[**get_root_server**](RootServerApi.md#get_root_server) | **GET** /api/v1/rootservers/{rootServerId} | Retrieves a root server
+[**get_root_servers**](RootServerApi.md#get_root_servers) | **GET** /api/v1/rootservers | Retrieves root servers
 [**get_service_bodies**](RootServerApi.md#get_service_bodies) | **GET** /api/v1/servicebodies | Retrieves service bodies
 [**get_service_body**](RootServerApi.md#get_service_body) | **GET** /api/v1/servicebodies/{serviceBodyId} | Retrieves a service body
 [**get_user**](RootServerApi.md#get_user) | **GET** /api/v1/users/{userId} | Retrieves a single user
@@ -48,8 +51,8 @@ Revoke token and logout.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -92,8 +95,8 @@ Refresh token.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -137,11 +140,11 @@ Exchange credentials for a new token
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 );
 
-my $token_credentials = BmltClient::Object::TokenCredentials->new(); # TokenCredentials | User credentials
+my $token_credentials = bmlt-cli::Object::TokenCredentials->new(); # TokenCredentials | User credentials
 
 eval {
     my $result = $api_instance->auth_token(token_credentials => $token_credentials);
@@ -173,6 +176,55 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_error_test**
+> ErrorTest create_error_test(error_test => $error_test)
+
+Tests some errors
+
+Tests some errors.
+
+### Example
+```perl
+use Data::Dumper;
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
+
+    # Configure OAuth2 access token for authorization: bmltToken
+    access_token => 'YOUR_ACCESS_TOKEN',
+);
+
+my $error_test = bmlt-cli::Object::ErrorTest->new(); # ErrorTest | Pass in error test object.
+
+eval {
+    my $result = $api_instance->create_error_test(error_test => $error_test);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling RootServerApi->create_error_test: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **error_test** | [**ErrorTest**](ErrorTest.md)| Pass in error test object. | 
+
+### Return type
+
+[**ErrorTest**](ErrorTest.md)
+
+### Authorization
+
+[bmltToken](../README.md#bmltToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_format**
 > Format create_format(format_create => $format_create)
 
@@ -183,14 +235,14 @@ Creates a format.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $format_create = BmltClient::Object::FormatCreate->new(); # FormatCreate | Pass in format object
+my $format_create = bmlt-cli::Object::FormatCreate->new(); # FormatCreate | Pass in format object
 
 eval {
     my $result = $api_instance->create_format(format_create => $format_create);
@@ -232,14 +284,14 @@ Creates a meeting.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $meeting_create = BmltClient::Object::MeetingCreate->new(); # MeetingCreate | Pass in meeting object
+my $meeting_create = bmlt-cli::Object::MeetingCreate->new(); # MeetingCreate | Pass in meeting object
 
 eval {
     my $result = $api_instance->create_meeting(meeting_create => $meeting_create);
@@ -281,14 +333,14 @@ Creates a service body.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $service_body_create = BmltClient::Object::ServiceBodyCreate->new(); # ServiceBodyCreate | Pass in service body object
+my $service_body_create = bmlt-cli::Object::ServiceBodyCreate->new(); # ServiceBodyCreate | Pass in service body object
 
 eval {
     my $result = $api_instance->create_service_body(service_body_create => $service_body_create);
@@ -330,14 +382,14 @@ Creates a user.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
-my $user_create = BmltClient::Object::UserCreate->new(); # UserCreate | Pass in user object
+my $user_create = bmlt-cli::Object::UserCreate->new(); # UserCreate | Pass in user object
 
 eval {
     my $result = $api_instance->create_user(user_create => $user_create);
@@ -379,8 +431,8 @@ Deletes a format by id.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -427,8 +479,8 @@ Deletes a meeting by id.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -475,8 +527,8 @@ Deletes a service body by id.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -523,8 +575,8 @@ Deletes a user by id
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -571,8 +623,8 @@ Retrieve a format
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -620,8 +672,8 @@ Retrieve formats
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -665,8 +717,8 @@ Retrieve a meeting.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -714,8 +766,8 @@ Retrieve meetings for authenticated user.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -759,6 +811,97 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_root_server**
+> RootServer get_root_server(root_server_id => $root_server_id)
+
+Retrieves a root server
+
+Retrieve a single root server id.
+
+### Example
+```perl
+use Data::Dumper;
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
+);
+
+my $root_server_id = 1; # int | ID of root server
+
+eval {
+    my $result = $api_instance->get_root_server(root_server_id => $root_server_id);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling RootServerApi->get_root_server: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **root_server_id** | **int**| ID of root server | 
+
+### Return type
+
+[**RootServer**](RootServer.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_root_servers**
+> ARRAY[RootServer] get_root_servers()
+
+Retrieves root servers
+
+Retrieve root servers.
+
+### Example
+```perl
+use Data::Dumper;
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
+
+    # Configure OAuth2 access token for authorization: bmltToken
+    access_token => 'YOUR_ACCESS_TOKEN',
+);
+
+
+eval {
+    my $result = $api_instance->get_root_servers();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling RootServerApi->get_root_servers: $@\n";
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ARRAY[RootServer]**](RootServer.md)
+
+### Authorization
+
+[bmltToken](../README.md#bmltToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_service_bodies**
 > ARRAY[ServiceBody] get_service_bodies()
 
@@ -769,8 +912,8 @@ Retrieve service bodies for authenticated user.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -814,8 +957,8 @@ Retrieve a single service body by id.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -863,8 +1006,8 @@ Retrieve single user.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -912,8 +1055,8 @@ Retrieve users for authenticated user.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
@@ -957,15 +1100,15 @@ Patches a user by id.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $user_id = 1; # int | ID of user
-my $user_partial_update = BmltClient::Object::UserPartialUpdate->new(); # UserPartialUpdate | Pass in fields you want to update.
+my $user_partial_update = bmlt-cli::Object::UserPartialUpdate->new(); # UserPartialUpdate | Pass in fields you want to update.
 
 eval {
     $api_instance->partial_update_user(user_id => $user_id, user_partial_update => $user_partial_update);
@@ -1007,15 +1150,15 @@ Patches a single format by id.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $format_id = 1; # int | ID of format
-my $format_partial_update = BmltClient::Object::FormatPartialUpdate->new(); # FormatPartialUpdate | Pass in fields you want to update.
+my $format_partial_update = bmlt-cli::Object::FormatPartialUpdate->new(); # FormatPartialUpdate | Pass in fields you want to update.
 
 eval {
     $api_instance->patch_format(format_id => $format_id, format_partial_update => $format_partial_update);
@@ -1057,15 +1200,15 @@ Patches a meeting by id
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $meeting_id = 1; # int | ID of meeting
-my $meeting_partial_update = BmltClient::Object::MeetingPartialUpdate->new(); # MeetingPartialUpdate | Pass in fields you want to update.
+my $meeting_partial_update = bmlt-cli::Object::MeetingPartialUpdate->new(); # MeetingPartialUpdate | Pass in fields you want to update.
 
 eval {
     $api_instance->patch_meeting(meeting_id => $meeting_id, meeting_partial_update => $meeting_partial_update);
@@ -1107,15 +1250,15 @@ Patches a single service body by id.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $service_body_id = 1; # int | ID of service body
-my $service_body_partial_update = BmltClient::Object::ServiceBodyPartialUpdate->new(); # ServiceBodyPartialUpdate | Pass in fields you want to update.
+my $service_body_partial_update = bmlt-cli::Object::ServiceBodyPartialUpdate->new(); # ServiceBodyPartialUpdate | Pass in fields you want to update.
 
 eval {
     $api_instance->patch_service_body(service_body_id => $service_body_id, service_body_partial_update => $service_body_partial_update);
@@ -1157,15 +1300,15 @@ Updates a format.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $format_id = 1; # int | ID of format
-my $format_update = BmltClient::Object::FormatUpdate->new(); # FormatUpdate | Pass in format object
+my $format_update = bmlt-cli::Object::FormatUpdate->new(); # FormatUpdate | Pass in format object
 
 eval {
     $api_instance->update_format(format_id => $format_id, format_update => $format_update);
@@ -1207,15 +1350,15 @@ Updates a meeting.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $meeting_id = 1; # int | ID of meeting
-my $meeting_update = BmltClient::Object::MeetingUpdate->new(); # MeetingUpdate | Pass in meeting object
+my $meeting_update = bmlt-cli::Object::MeetingUpdate->new(); # MeetingUpdate | Pass in meeting object
 
 eval {
     $api_instance->update_meeting(meeting_id => $meeting_id, meeting_update => $meeting_update);
@@ -1257,15 +1400,15 @@ Updates a single service body.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $service_body_id = 1; # int | ID of service body
-my $service_body_update = BmltClient::Object::ServiceBodyUpdate->new(); # ServiceBodyUpdate | Pass in service body object
+my $service_body_update = bmlt-cli::Object::ServiceBodyUpdate->new(); # ServiceBodyUpdate | Pass in service body object
 
 eval {
     $api_instance->update_service_body(service_body_id => $service_body_id, service_body_update => $service_body_update);
@@ -1307,15 +1450,15 @@ Updates a user.
 ### Example
 ```perl
 use Data::Dumper;
-use BmltClient::RootServerApi;
-my $api_instance = BmltClient::RootServerApi->new(
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
 
     # Configure OAuth2 access token for authorization: bmltToken
     access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 my $user_id = 1; # int | ID of user
-my $user_update = BmltClient::Object::UserUpdate->new(); # UserUpdate | Pass in user object
+my $user_update = bmlt-cli::Object::UserUpdate->new(); # UserUpdate | Pass in user object
 
 eval {
     $api_instance->update_user(user_id => $user_id, user_update => $user_update);

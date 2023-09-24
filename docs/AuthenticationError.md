@@ -1,8 +1,8 @@
-# BmltClient::Object::AuthenticationError
+# bmlt-cli::Object::AuthenticationError
 
 ## Load the model package
 ```perl
-use BmltClient::Object::AuthenticationError;
+use bmlt-cli::Object::AuthenticationError;
 ```
 
 ## Properties

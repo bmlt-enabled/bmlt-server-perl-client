@@ -15,14 +15,14 @@ my $my_app = $options{c} || 'My::App';
 if ($options{c}) {
     eval <<LOAD;
 use $my_app;
-apply_all_roles($my_app, "BmltClient::Role::AutoDoc");
+apply_all_roles($my_app, "bmlt-cli::Role::AutoDoc");
 LOAD
     die $@ if $@;
 }
 else {
     package My::App;
     use Moose;
-    with ('BmltClient::Role', 'BmltClient::Role::AutoDoc');
+    with ('bmlt-cli::Role', 'bmlt-cli::Role::AutoDoc');
 }
 
 package main;

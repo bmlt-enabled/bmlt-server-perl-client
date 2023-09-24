@@ -1,8 +1,8 @@
-# BmltClient::Object::Token
+# bmlt-cli::Object::Token
 
 ## Load the model package
 ```perl
-use BmltClient::Object::Token;
+use bmlt-cli::Object::Token;
 ```
 
 ## Properties

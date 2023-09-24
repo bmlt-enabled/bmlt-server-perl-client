@@ -1,8 +1,8 @@
-# BmltClient::Object::MeetingPartialUpdate
+# bmlt-cli::Object::MeetingPartialUpdate
 
 ## Load the model package
 ```perl
-use BmltClient::Object::MeetingPartialUpdate;
+use bmlt-cli::Object::MeetingPartialUpdate;
 ```
 
 ## Properties

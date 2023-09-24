@@ -1,8 +1,8 @@
-# BmltClient::Object::UserUpdate
+# bmlt-cli::Object::UserUpdate
 
 ## Load the model package
 ```perl
-use BmltClient::Object::UserUpdate;
+use bmlt-cli::Object::UserUpdate;
 ```
 
 ## Properties

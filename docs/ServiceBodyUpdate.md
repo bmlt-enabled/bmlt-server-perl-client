@@ -1,8 +1,8 @@
-# BmltClient::Object::ServiceBodyUpdate
+# bmlt-cli::Object::ServiceBodyUpdate
 
 ## Load the model package
 ```perl
-use BmltClient::Object::ServiceBodyUpdate;
+use bmlt-cli::Object::ServiceBodyUpdate;
 ```
 
 ## Properties

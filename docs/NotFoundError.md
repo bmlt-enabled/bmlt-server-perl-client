@@ -1,8 +1,8 @@
-# BmltClient::Object::NotFoundError
+# bmlt-cli::Object::NotFoundError
 
 ## Load the model package
 ```perl
-use BmltClient::Object::NotFoundError;
+use bmlt-cli::Object::NotFoundError;
 ```
 
 ## Properties

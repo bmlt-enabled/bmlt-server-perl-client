@@ -1,8 +1,8 @@
-# BmltClient::Object::UserBase
+# bmlt-cli::Object::UserBase
 
 ## Load the model package
 ```perl
-use BmltClient::Object::UserBase;
+use bmlt-cli::Object::UserBase;
 ```
 
 ## Properties

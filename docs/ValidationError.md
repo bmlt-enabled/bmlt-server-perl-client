@@ -1,8 +1,8 @@
-# BmltClient::Object::ValidationError
+# bmlt-cli::Object::ValidationError
 
 ## Load the model package
 ```perl
-use BmltClient::Object::ValidationError;
+use bmlt-cli::Object::ValidationError;
 ```
 
 ## Properties
