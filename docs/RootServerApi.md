@@ -23,7 +23,9 @@ Method | HTTP request | Description
 [**delete_user**](RootServerApi.md#delete_user) | **DELETE** /api/v1/users/{userId} | Deletes a user
 [**get_format**](RootServerApi.md#get_format) | **GET** /api/v1/formats/{formatId} | Retrieves a format
 [**get_formats**](RootServerApi.md#get_formats) | **GET** /api/v1/formats | Retrieves formats
+[**get_laravel_log**](RootServerApi.md#get_laravel_log) | **GET** /api/v1/logs/laravel | Retrieves laravel log
 [**get_meeting**](RootServerApi.md#get_meeting) | **GET** /api/v1/meetings/{meetingId} | Retrieves a meeting
+[**get_meeting_changes**](RootServerApi.md#get_meeting_changes) | **GET** /api/v1/meetings/{meetingId}/changes | Retrieve changes for a meeting
 [**get_meetings**](RootServerApi.md#get_meetings) | **GET** /api/v1/meetings | Retrieves meetings
 [**get_root_server**](RootServerApi.md#get_root_server) | **GET** /api/v1/rootservers/{rootServerId} | Retrieves a root server
 [**get_root_servers**](RootServerApi.md#get_root_servers) | **GET** /api/v1/rootservers | Retrieves root servers
@@ -707,6 +709,51 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_laravel_log**
+> string get_laravel_log()
+
+Retrieves laravel log
+
+Retrieve the laravel log if it exists.
+
+### Example
+```perl
+use Data::Dumper;
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
+
+    # Configure OAuth2 access token for authorization: bmltToken
+    access_token => 'YOUR_ACCESS_TOKEN',
+);
+
+
+eval {
+    my $result = $api_instance->get_laravel_log();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling RootServerApi->get_laravel_log: $@\n";
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bmltToken](../README.md#bmltToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/gzip, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_meeting**
 > Meeting get_meeting(meeting_id => $meeting_id)
 
@@ -744,6 +791,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Meeting**](Meeting.md)
+
+### Authorization
+
+[bmltToken](../README.md#bmltToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_meeting_changes**
+> ARRAY[MeetingChangeResource] get_meeting_changes(meeting_id => $meeting_id)
+
+Retrieve changes for a meeting
+
+Retrieve all changes made to a specific meeting.
+
+### Example
+```perl
+use Data::Dumper;
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
+
+    # Configure OAuth2 access token for authorization: bmltToken
+    access_token => 'YOUR_ACCESS_TOKEN',
+);
+
+my $meeting_id = 1; # int | ID of the meeting
+
+eval {
+    my $result = $api_instance->get_meeting_changes(meeting_id => $meeting_id);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling RootServerApi->get_meeting_changes: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **meeting_id** | **int**| ID of the meeting | 
+
+### Return type
+
+[**ARRAY[MeetingChangeResource]**](MeetingChangeResource.md)
 
 ### Authorization
 
@@ -869,9 +965,6 @@ Retrieve root servers.
 use Data::Dumper;
 use bmlt-cli::RootServerApi;
 my $api_instance = bmlt-cli::RootServerApi->new(
-
-    # Configure OAuth2 access token for authorization: bmltToken
-    access_token => 'YOUR_ACCESS_TOKEN',
 );
 
 
@@ -893,7 +986,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[bmltToken](../README.md#bmltToken)
+No authorization required
 
 ### HTTP request headers
 

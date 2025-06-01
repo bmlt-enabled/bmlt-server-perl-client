@@ -219,13 +219,6 @@ __PACKAGE__->class_documentation({description => '',
 }                                 );
 
 __PACKAGE__->method_documentation({
-    'password' => {
-        datatype => 'string',
-        base_name => 'password',
-        description => '',
-        format => '',
-        read_only => '',
-            },
     'username' => {
         datatype => 'string',
         base_name => 'username',
@@ -233,16 +226,23 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'password' => {
+        datatype => 'string',
+        base_name => 'password',
+        description => '',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
-    'password' => 'string',
-    'username' => 'string'
+    'username' => 'string',
+    'password' => 'string'
 } );
 
 __PACKAGE__->attribute_map( {
-    'password' => 'password',
-    'username' => 'username'
+    'username' => 'username',
+    'password' => 'password'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

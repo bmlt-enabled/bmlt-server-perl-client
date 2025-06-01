@@ -901,6 +901,55 @@ sub get_formats {
 }
 
 #
+# get_laravel_log
+#
+# Retrieves laravel log
+#
+{
+    my $params = {
+    };
+    __PACKAGE__->method_documentation->{ 'get_laravel_log' } = {
+        summary => 'Retrieves laravel log',
+        params => $params,
+        returns => 'string',
+        };
+}
+# @return string
+#
+sub get_laravel_log {
+    my ($self, %args) = @_;
+
+    # parse inputs
+    my $_resource_path = '/api/v1/logs/laravel';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/gzip', 'application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(bmltToken )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('string', $response);
+    return $_response_object;
+}
+
+#
 # get_meeting
 #
 # Retrieves a meeting
@@ -964,6 +1013,73 @@ sub get_meeting {
         return;
     }
     my $_response_object = $self->{api_client}->deserialize('Meeting', $response);
+    return $_response_object;
+}
+
+#
+# get_meeting_changes
+#
+# Retrieve changes for a meeting
+#
+# @param int $meeting_id ID of the meeting (required)
+{
+    my $params = {
+    'meeting_id' => {
+        data_type => 'int',
+        description => 'ID of the meeting',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'get_meeting_changes' } = {
+        summary => 'Retrieve changes for a meeting',
+        params => $params,
+        returns => 'ARRAY[MeetingChangeResource]',
+        };
+}
+# @return ARRAY[MeetingChangeResource]
+#
+sub get_meeting_changes {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'meeting_id' is set
+    unless (exists $args{'meeting_id'}) {
+      croak("Missing the required parameter 'meeting_id' when calling get_meeting_changes");
+    }
+
+    # parse inputs
+    my $_resource_path = '/api/v1/meetings/{meetingId}/changes';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'meeting_id'}) {
+        my $_base_variable = "{" . "meetingId" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'meeting_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(bmltToken )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('ARRAY[MeetingChangeResource]', $response);
     return $_response_object;
 }
 
@@ -1163,7 +1279,7 @@ sub get_root_servers {
 
     my $_body_data;
     # authentication setting, if any
-    my $auth_settings = [qw(bmltToken )];
+    my $auth_settings = [qw()];
 
     # make the API Call
     my $response = $self->{api_client}->call_api($_resource_path, $_method,

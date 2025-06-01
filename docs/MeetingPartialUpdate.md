@@ -42,8 +42,9 @@ Name | Type | Description | Notes
 **contact_email_1** | **string** |  | [optional] 
 **contact_email_2** | **string** |  | [optional] 
 **bus_lines** | **string** |  | [optional] 
-**train_line** | **string** |  | [optional] 
+**train_lines** | **string** |  | [optional] 
 **comments** | **string** |  | [optional] 
+**custom_fields** | **HASH[string,string]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

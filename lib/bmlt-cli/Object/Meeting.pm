@@ -457,9 +457,9 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
-    'train_line' => {
+    'train_lines' => {
         datatype => 'string',
-        base_name => 'train_line',
+        base_name => 'train_lines',
         description => '',
         format => '',
         read_only => '',
@@ -467,6 +467,13 @@ __PACKAGE__->method_documentation({
     'comments' => {
         datatype => 'string',
         base_name => 'comments',
+        description => '',
+        format => '',
+        read_only => '',
+            },
+    'custom_fields' => {
+        datatype => 'HASH[string,string]',
+        base_name => 'customFields',
         description => '',
         format => '',
         read_only => '',
@@ -515,8 +522,9 @@ __PACKAGE__->openapi_types( {
     'contact_email_1' => 'string',
     'contact_email_2' => 'string',
     'bus_lines' => 'string',
-    'train_line' => 'string',
+    'train_lines' => 'string',
     'comments' => 'string',
+    'custom_fields' => 'HASH[string,string]',
     'id' => 'int'
 } );
 
@@ -555,8 +563,9 @@ __PACKAGE__->attribute_map( {
     'contact_email_1' => 'contact_email_1',
     'contact_email_2' => 'contact_email_2',
     'bus_lines' => 'bus_lines',
-    'train_line' => 'train_line',
+    'train_lines' => 'train_lines',
     'comments' => 'comments',
+    'custom_fields' => 'customFields',
     'id' => 'id'
 } );
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **display_name** | **string** |  | 
 **description** | **string** |  | 
 **email** | **string** |  | 
-**owner_id** | **string** |  | 
+**owner_id** | **int** |  | 
 **id** | **int** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

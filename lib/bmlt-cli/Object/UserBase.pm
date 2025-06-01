@@ -255,7 +255,7 @@ __PACKAGE__->method_documentation({
         read_only => '',
             },
     'owner_id' => {
-        datatype => 'string',
+        datatype => 'int',
         base_name => 'ownerId',
         description => '',
         format => '',
@@ -269,7 +269,7 @@ __PACKAGE__->openapi_types( {
     'display_name' => 'string',
     'description' => 'string',
     'email' => 'string',
-    'owner_id' => 'string'
+    'owner_id' => 'int'
 } );
 
 __PACKAGE__->attribute_map( {
