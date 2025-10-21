@@ -1689,6 +1689,7 @@ sub patch_format {
 #
 # @param int $meeting_id ID of meeting (required)
 # @param MeetingPartialUpdate $meeting_partial_update Pass in fields you want to update. (required)
+# @param boolean $skip_venue_type_location_validation specify true to skip venue type location validation (optional)
 {
     my $params = {
     'meeting_id' => {
@@ -1700,6 +1701,11 @@ sub patch_format {
         data_type => 'MeetingPartialUpdate',
         description => 'Pass in fields you want to update.',
         required => '1',
+    },
+    'skip_venue_type_location_validation' => {
+        data_type => 'boolean',
+        description => 'specify true to skip venue type location validation',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'patch_meeting' } = {
@@ -1737,6 +1743,11 @@ sub patch_meeting {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # query params
+    if ( exists $args{'skip_venue_type_location_validation'}) {
+        $query_params->{'skipVenueTypeLocationValidation'} = $self->{api_client}->to_query_value($args{'skip_venue_type_location_validation'});
+    }
 
     # path params
     if ( exists $args{'meeting_id'}) {

@@ -1284,7 +1284,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **patch_meeting**
-> patch_meeting(meeting_id => $meeting_id, meeting_partial_update => $meeting_partial_update)
+> patch_meeting(meeting_id => $meeting_id, meeting_partial_update => $meeting_partial_update, skip_venue_type_location_validation => $skip_venue_type_location_validation)
 
 Patches a meeting
 
@@ -1302,9 +1302,10 @@ my $api_instance = bmlt-cli::RootServerApi->new(
 
 my $meeting_id = 1; # int | ID of meeting
 my $meeting_partial_update = bmlt-cli::Object::MeetingPartialUpdate->new(); # MeetingPartialUpdate | Pass in fields you want to update.
+my $skip_venue_type_location_validation = true; # boolean | specify true to skip venue type location validation
 
 eval {
-    $api_instance->patch_meeting(meeting_id => $meeting_id, meeting_partial_update => $meeting_partial_update);
+    $api_instance->patch_meeting(meeting_id => $meeting_id, meeting_partial_update => $meeting_partial_update, skip_venue_type_location_validation => $skip_venue_type_location_validation);
 };
 if ($@) {
     warn "Exception when calling RootServerApi->patch_meeting: $@\n";
@@ -1317,6 +1318,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **meeting_id** | **int**| ID of meeting | 
  **meeting_partial_update** | [**MeetingPartialUpdate**](MeetingPartialUpdate.md)| Pass in fields you want to update. | 
+ **skip_venue_type_location_validation** | **boolean**| specify true to skip venue type location validation | [optional] 
 
 ### Return type
 
