@@ -268,6 +268,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'last_login_at' => {
+        datatype => 'DATE_TIME',
+        base_name => 'lastLoginAt',
+        description => '',
+        format => '',
+        read_only => '',
+            },
 });
 
 __PACKAGE__->openapi_types( {
@@ -277,7 +284,8 @@ __PACKAGE__->openapi_types( {
     'description' => 'string',
     'email' => 'string',
     'owner_id' => 'int',
-    'id' => 'int'
+    'id' => 'int',
+    'last_login_at' => 'DATE_TIME'
 } );
 
 __PACKAGE__->attribute_map( {
@@ -287,7 +295,8 @@ __PACKAGE__->attribute_map( {
     'description' => 'description',
     'email' => 'email',
     'owner_id' => 'ownerId',
-    'id' => 'id'
+    'id' => 'id',
+    'last_login_at' => 'lastLoginAt'
 } );
 
 __PACKAGE__->mk_accessors(keys %{__PACKAGE__->attribute_map});

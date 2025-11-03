@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **email** | **string** |  | 
 **owner_id** | **int** |  | 
 **id** | **int** |  | 
+**last_login_at** | **DATE_TIME** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
