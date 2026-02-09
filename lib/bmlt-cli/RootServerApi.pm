@@ -664,12 +664,18 @@ sub delete_meeting {
 # Deletes a service body
 #
 # @param int $service_body_id ID of service body (required)
+# @param string $force Force deletion of service body and all associated meetings (optional, default to 'false')
 {
     my $params = {
     'service_body_id' => {
         data_type => 'int',
         description => 'ID of service body',
         required => '1',
+    },
+    'force' => {
+        data_type => 'string',
+        description => 'Force deletion of service body and all associated meetings',
+        required => '0',
     },
     };
     __PACKAGE__->method_documentation->{ 'delete_service_body' } = {
@@ -702,6 +708,11 @@ sub delete_service_body {
         $header_params->{'Accept'} = $_header_accept;
     }
     $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # query params
+    if ( exists $args{'force'}) {
+        $query_params->{'force'} = $self->{api_client}->to_query_value($args{'force'});
+    }
 
     # path params
     if ( exists $args{'service_body_id'}) {
@@ -1409,6 +1420,55 @@ sub get_service_body {
 }
 
 #
+# get_settings
+#
+# Retrieves all settings
+#
+{
+    my $params = {
+    };
+    __PACKAGE__->method_documentation->{ 'get_settings' } = {
+        summary => 'Retrieves all settings',
+        params => $params,
+        returns => 'SettingsObject',
+        };
+}
+# @return SettingsObject
+#
+sub get_settings {
+    my ($self, %args) = @_;
+
+    # parse inputs
+    my $_resource_path = '/api/v1/settings';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(bmltToken )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('SettingsObject', $response);
+    return $_response_object;
+}
+
+#
 # get_user
 #
 # Retrieves a single user
@@ -2076,6 +2136,67 @@ sub update_service_body {
     # body params
     if ( exists $args{'service_body_update'}) {
         $_body_data = $args{'service_body_update'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(bmltToken )];
+
+    # make the API Call
+    $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    return;
+}
+
+#
+# update_settings
+#
+# Update settings
+#
+# @param SettingsUpdate $settings_update Pass in settings object with values to update (required)
+{
+    my $params = {
+    'settings_update' => {
+        data_type => 'SettingsUpdate',
+        description => 'Pass in settings object with values to update',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'update_settings' } = {
+        summary => 'Update settings',
+        params => $params,
+        returns => undef,
+        };
+}
+# @return void
+#
+sub update_settings {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'settings_update' is set
+    unless (exists $args{'settings_update'}) {
+      croak("Missing the required parameter 'settings_update' when calling update_settings");
+    }
+
+    # parse inputs
+    my $_resource_path = '/api/v1/settings';
+
+    my $_method = 'PATCH';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('application/json');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'settings_update'}) {
+        $_body_data = $args{'settings_update'};
     }
 
     # authentication setting, if any

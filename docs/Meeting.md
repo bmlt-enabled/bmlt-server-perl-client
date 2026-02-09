@@ -44,6 +44,7 @@ Name | Type | Description | Notes
 **bus_lines** | **string** |  | [optional] 
 **train_lines** | **string** |  | [optional] 
 **comments** | **string** |  | [optional] 
+**admin_notes** | **string** |  | [optional] 
 **custom_fields** | **HASH[string,string]** |  | [optional] 
 **id** | **int** |  | 
 

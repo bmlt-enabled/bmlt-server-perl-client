@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 .travis.yml
 README.md
 bin/autodoc
@@ -33,6 +32,9 @@ docs/ServiceBodyBase.md
 docs/ServiceBodyCreate.md
 docs/ServiceBodyPartialUpdate.md
 docs/ServiceBodyUpdate.md
+docs/SettingsBase.md
+docs/SettingsObject.md
+docs/SettingsUpdate.md
 docs/Token.md
 docs/TokenCredentials.md
 docs/User.md
@@ -73,6 +75,9 @@ lib/bmlt-cli/Object/ServiceBodyBase.pm
 lib/bmlt-cli/Object/ServiceBodyCreate.pm
 lib/bmlt-cli/Object/ServiceBodyPartialUpdate.pm
 lib/bmlt-cli/Object/ServiceBodyUpdate.pm
+lib/bmlt-cli/Object/SettingsBase.pm
+lib/bmlt-cli/Object/SettingsObject.pm
+lib/bmlt-cli/Object/SettingsUpdate.pm
 lib/bmlt-cli/Object/Token.pm
 lib/bmlt-cli/Object/TokenCredentials.pm
 lib/bmlt-cli/Object/User.pm

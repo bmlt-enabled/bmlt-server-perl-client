@@ -7,7 +7,7 @@ generate: openapi.json
 	    -i openapi.json \
 	    -g perl \
 	    -p moduleName=bmlt-cli \
-	    -p moduleVersion=1.0.1 \
+	    -p moduleVersion=1.0.2 \
 	    -o .
 
 clean:

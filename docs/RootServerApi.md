@@ -31,6 +31,7 @@ Method | HTTP request | Description
 [**get_root_servers**](RootServerApi.md#get_root_servers) | **GET** /api/v1/rootservers | Retrieves root servers
 [**get_service_bodies**](RootServerApi.md#get_service_bodies) | **GET** /api/v1/servicebodies | Retrieves service bodies
 [**get_service_body**](RootServerApi.md#get_service_body) | **GET** /api/v1/servicebodies/{serviceBodyId} | Retrieves a service body
+[**get_settings**](RootServerApi.md#get_settings) | **GET** /api/v1/settings | Retrieves all settings
 [**get_user**](RootServerApi.md#get_user) | **GET** /api/v1/users/{userId} | Retrieves a single user
 [**get_users**](RootServerApi.md#get_users) | **GET** /api/v1/users | Retrieves users
 [**partial_update_user**](RootServerApi.md#partial_update_user) | **PATCH** /api/v1/users/{userId} | Patches a user
@@ -40,6 +41,7 @@ Method | HTTP request | Description
 [**update_format**](RootServerApi.md#update_format) | **PUT** /api/v1/formats/{formatId} | Updates a format
 [**update_meeting**](RootServerApi.md#update_meeting) | **PUT** /api/v1/meetings/{meetingId} | Updates a meeting
 [**update_service_body**](RootServerApi.md#update_service_body) | **PUT** /api/v1/servicebodies/{serviceBodyId} | Updates a Service Body
+[**update_settings**](RootServerApi.md#update_settings) | **PATCH** /api/v1/settings | Update settings
 [**update_user**](RootServerApi.md#update_user) | **PUT** /api/v1/users/{userId} | Update single user
 
 
@@ -520,11 +522,11 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_service_body**
-> delete_service_body(service_body_id => $service_body_id)
+> delete_service_body(service_body_id => $service_body_id, force => $force)
 
 Deletes a service body
 
-Deletes a service body by id.
+Deletes a service body by id. If the service body has meetings, use force=true to delete them as well.
 
 ### Example
 ```perl
@@ -537,9 +539,10 @@ my $api_instance = bmlt-cli::RootServerApi->new(
 );
 
 my $service_body_id = 1; # int | ID of service body
+my $force = false; # string | Force deletion of service body and all associated meetings
 
 eval {
-    $api_instance->delete_service_body(service_body_id => $service_body_id);
+    $api_instance->delete_service_body(service_body_id => $service_body_id, force => $force);
 };
 if ($@) {
     warn "Exception when calling RootServerApi->delete_service_body: $@\n";
@@ -551,6 +554,7 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_body_id** | **int**| ID of service body | 
+ **force** | **string**| Force deletion of service body and all associated meetings | [optional] [default to &#39;false&#39;]
 
 ### Return type
 
@@ -1089,6 +1093,51 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_settings**
+> SettingsObject get_settings()
+
+Retrieves all settings
+
+Retrieve all server settings. Only accessible to server administrators.
+
+### Example
+```perl
+use Data::Dumper;
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
+
+    # Configure OAuth2 access token for authorization: bmltToken
+    access_token => 'YOUR_ACCESS_TOKEN',
+);
+
+
+eval {
+    my $result = $api_instance->get_settings();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling RootServerApi->get_settings: $@\n";
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SettingsObject**](SettingsObject.md)
+
+### Authorization
+
+[bmltToken](../README.md#bmltToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_user**
 > User get_user(user_id => $user_id)
 
@@ -1519,6 +1568,54 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **service_body_id** | **int**| ID of service body | 
  **service_body_update** | [**ServiceBodyUpdate**](ServiceBodyUpdate.md)| Pass in service body object | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[bmltToken](../README.md#bmltToken)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_settings**
+> update_settings(settings_update => $settings_update)
+
+Update settings
+
+Updates one or more server settings. Only accessible to server administrators.
+
+### Example
+```perl
+use Data::Dumper;
+use bmlt-cli::RootServerApi;
+my $api_instance = bmlt-cli::RootServerApi->new(
+
+    # Configure OAuth2 access token for authorization: bmltToken
+    access_token => 'YOUR_ACCESS_TOKEN',
+);
+
+my $settings_update = bmlt-cli::Object::SettingsUpdate->new(); # SettingsUpdate | Pass in settings object with values to update
+
+eval {
+    $api_instance->update_settings(settings_update => $settings_update);
+};
+if ($@) {
+    warn "Exception when calling RootServerApi->update_settings: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settings_update** | [**SettingsUpdate**](SettingsUpdate.md)| Pass in settings object with values to update | 
 
 ### Return type
 

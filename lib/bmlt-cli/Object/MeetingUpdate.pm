@@ -471,6 +471,13 @@ __PACKAGE__->method_documentation({
         format => '',
         read_only => '',
             },
+    'admin_notes' => {
+        datatype => 'string',
+        base_name => 'admin_notes',
+        description => '',
+        format => '',
+        read_only => '',
+            },
     'custom_fields' => {
         datatype => 'HASH[string,string]',
         base_name => 'customFields',
@@ -517,6 +524,7 @@ __PACKAGE__->openapi_types( {
     'bus_lines' => 'string',
     'train_lines' => 'string',
     'comments' => 'string',
+    'admin_notes' => 'string',
     'custom_fields' => 'HASH[string,string]'
 } );
 
@@ -557,6 +565,7 @@ __PACKAGE__->attribute_map( {
     'bus_lines' => 'bus_lines',
     'train_lines' => 'train_lines',
     'comments' => 'comments',
+    'admin_notes' => 'admin_notes',
     'custom_fields' => 'customFields'
 } );
 
